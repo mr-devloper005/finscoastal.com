@@ -3,13 +3,13 @@
 ## Screenshots
 
 ### Homepage Hero
-![Homepage Hero](C:/Users/Aditya/Pictures/Screenshots/Screenshot%202026-04-10%20130639.png)
+![Homepage Hero](docs/readme-assets/homepage-hero.png)
 
 ### Homepage Categories and Listings
-![Homepage Categories and Listings](C:/Users/Aditya/Pictures/Screenshots/Screenshot%202026-04-10%20130647.png)
+![Homepage Categories and Listings](docs/readme-assets/homepage-categories.png)
 
 ### Homepage Footer and CTA Area
-![Homepage Footer and CTA Area](C:/Users/Aditya/Pictures/Screenshots/Screenshot%202026-04-10%20130657.png)
+![Homepage Footer and CTA Area](docs/readme-assets/homepage-footer.png)
 
 ### Classified Listings Page
-![Classified Listings Page](C:/Users/Aditya/Pictures/Screenshots/Screenshot%202026-04-10%20130704.png)
+![Classified Listings Page](docs/readme-assets/classified-listings.png)
