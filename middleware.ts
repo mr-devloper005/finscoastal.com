@@ -14,15 +14,13 @@ export function middleware(request: NextRequest) {
   const hostHeader = request.headers.get('host')
   const rawHost = forwardedHost || hostHeader || request.nextUrl.host
   const host = normalizeHost(rawHost)
-  const forwardedProto = request.headers.get('x-forwarded-proto') || request.nextUrl.protocol.replace(':', '')
 
   if (!host || LOCAL_HOSTS.has(host)) {
     return NextResponse.next()
   }
 
-  if (host === WWW_HOST || (host === CANONICAL_HOST && forwardedProto !== 'https')) {
+  if (host === WWW_HOST) {
     const url = request.nextUrl.clone()
-    url.protocol = 'https'
     url.hostname = CANONICAL_HOST
     url.port = ''
     return NextResponse.redirect(url, 301)

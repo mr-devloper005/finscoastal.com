@@ -17,6 +17,7 @@ services:
         NEXT_PUBLIC_SITE_OG_IMAGE: ${NEXT_PUBLIC_SITE_OG_IMAGE}
     env_file:
       - .env
+    network_mode: bridge
     restart: unless-stopped
     ports:
       - "127.0.0.1:3038:3000"
