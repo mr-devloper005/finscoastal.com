@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Building2, CircleHelp, ShieldCheck, Tag } from 'lucide-react'
+import { ArrowRight, Building2, CircleHelp, ShieldCheck } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
 import { AuthActionLink } from '@/overrides/auth-action-link'
 
@@ -41,8 +41,8 @@ export function FooterOverride() {
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr]">
           <div className="rounded-[1.75rem] border border-[rgba(15,48,107,0.1)] bg-white/90 p-7 shadow-[0_24px_64px_rgba(17,43,95,0.08)]">
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-[1.1rem] bg-[linear-gradient(135deg,#0f7ff2_0%,#2b9eff_100%)] text-white shadow-[0_14px_28px_rgba(15,127,242,0.22)]">
-                <Tag className="h-6 w-6" />
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[1.1rem] border border-[rgba(15,48,107,0.12)] bg-white p-1 shadow-sm">
+                <img src="/favicon.png?v=20260413" alt={`${SITE_CONFIG.name} logo`} width={48} height={48} className="h-full w-full object-contain" />
               </div>
               <div>
                 <p className="text-lg font-extrabold tracking-[-0.04em]">{SITE_CONFIG.name}</p>
