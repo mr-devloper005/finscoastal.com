@@ -53,8 +53,8 @@ export function NavbarOverride() {
 
       <nav className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-[1.15rem] bg-[linear-gradient(135deg,#0f7ff2_0%,#2b9eff_100%)] text-white shadow-[0_16px_36px_rgba(15,127,242,0.28)]">
-            <LayoutGrid className="h-6 w-6" />
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[1.15rem] border border-[rgba(15,48,107,0.12)] bg-white p-1 shadow-sm">
+            <img src="/favicon.png?v=20260413" alt={`${SITE_CONFIG.name} logo`} width={48} height={48} className="h-full w-full object-contain" />
           </div>
           <div className="min-w-0">
             <div className="truncate text-lg font-extrabold tracking-[-0.04em] text-[#13213c]">{SITE_CONFIG.name}</div>

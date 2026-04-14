@@ -117,7 +117,7 @@ export function Navbar() {
             <div className="flex min-w-0 items-center gap-3">
               <Link href="/" className="flex min-w-0 items-center gap-3">
                 <div className={cn('flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden p-1.5', palette.logo)}>
-                  <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="44" height="44" className="h-full w-full object-contain" />
+                  <img src="/favicon.png?v=20260413" alt={`${SITE_CONFIG.name} logo`} width="44" height="44" className="h-full w-full object-contain" />
                 </div>
                 <div className="min-w-0">
                   <span className="block truncate text-lg font-semibold">{SITE_CONFIG.name}</span>
@@ -168,7 +168,7 @@ export function Navbar() {
           <div className="flex h-full flex-col">
             <Link href="/" className="flex items-center gap-3">
               <div className={cn('flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden p-1.5', palette.logo)}>
-                <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="48" height="48" className="h-full w-full object-contain" />
+                <img src="/favicon.png?v=20260413" alt={`${SITE_CONFIG.name} logo`} width="48" height="48" className="h-full w-full object-contain" />
               </div>
               <div className="min-w-0">
                 <span className="block truncate text-xl font-semibold">{SITE_CONFIG.name}</span>
@@ -256,7 +256,7 @@ export function Navbar() {
           <div className="flex min-w-0 items-center gap-3">
             <Link href="/" className="flex min-w-0 items-center gap-3">
               <div className={cn('flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden p-1.5', style.logo)}>
-                <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="48" height="48" className="h-full w-full object-contain" />
+                <img src="/favicon.png?v=20260413" alt={`${SITE_CONFIG.name} logo`} width="48" height="48" className="h-full w-full object-contain" />
               </div>
               <div className="min-w-0">
                 <span className="block truncate text-lg font-semibold">{SITE_CONFIG.name}</span>
@@ -303,7 +303,7 @@ export function Navbar() {
         <div className="flex h-full flex-col">
           <Link href="/" className="flex items-center gap-3">
             <div className={cn('flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden p-1.5', style.logo)}>
-              <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="48" height="48" className="h-full w-full object-contain" />
+              <img src="/favicon.png?v=20260413" alt={`${SITE_CONFIG.name} logo`} width="48" height="48" className="h-full w-full object-contain" />
             </div>
             <div className="min-w-0">
               <span className="block truncate text-xl font-semibold">{SITE_CONFIG.name}</span>
