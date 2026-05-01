@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, Clock3, Globe, Mail, MapPin, Phone, ShieldCheck, Tag } from 'lucide-react'
+import { ArrowRight, Globe, Mail, MapPin, Phone, ShieldCheck, Tag } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { TaskPostCard } from '@/components/shared/task-post-card'
@@ -185,10 +185,6 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
             <div className="space-y-5">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="market-chip">{category}</span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-[#edf5ff] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0f7ff2]">
-                  <Clock3 className="h-3.5 w-3.5" />
-                  {timeLabel}
-                </span>
                 <span className="inline-flex items-center gap-2 rounded-full bg-[#fff7ef] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#ea6610]">
                   <ShieldCheck className="h-3.5 w-3.5" />
                   {condition}

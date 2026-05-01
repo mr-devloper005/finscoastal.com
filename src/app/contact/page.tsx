@@ -1,6 +1,7 @@
 import { Building2, FileText, Image as ImageIcon, Mail, MapPin, Phone, Sparkles, Bookmark } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
+import { Button } from '@/components/ui/button'
 import { SITE_CONFIG } from '@/lib/site-config'
 import { getFactoryState } from '@/design/factory/get-factory-state'
 import { getProductKind } from '@/design/factory/get-product-kind'
@@ -93,6 +94,29 @@ export default function ContactPage() {
                   <p className={`mt-2 text-sm leading-7 ${tone.muted}`}>{lane.body}</p>
                 </div>
               ))}
+            </div>
+
+            <div className={`mt-8 rounded-[1.6rem] p-6 ${tone.soft}`}>
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5" />
+                <div>
+                  <div className={`text-xs font-semibold uppercase tracking-[0.2em] ${tone.muted}`}>Email us</div>
+                  <a
+                    href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
+                    className={`text-sm font-medium hover:underline`}
+                  >
+                    {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
+                  </a>
+                </div>
+              </div>
+              <Button
+                asChild
+                className={`mt-4 w-full rounded-full ${tone.action}`}
+              >
+                <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
+                  Send email
+                </a>
+              </Button>
             </div>
           </div>
 
