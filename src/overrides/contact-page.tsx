@@ -2,6 +2,7 @@ import { Building2, Mail, MapPin, Phone, ShieldCheck, Sparkles } from 'lucide-re
 import { Footer } from '@/components/shared/footer'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { SITE_CONFIG } from '@/lib/site-config'
+import { Button } from '@/components/ui/button'
 
 export const CONTACT_PAGE_OVERRIDE_ENABLED = true
 
@@ -47,6 +48,29 @@ export function ContactPageOverride() {
                   <p className="mt-2 text-sm leading-7 text-white/78">{lane.body}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8 rounded-[1.3rem] border border-white/14 bg-white/10 px-4 py-5">
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5" />
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Email us</div>
+                  <a
+                    href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
+                    className="text-sm font-medium text-white hover:underline"
+                  >
+                    {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
+                  </a>
+                </div>
+              </div>
+              <Button
+                asChild
+                className="mt-4 w-full rounded-full bg-white text-[#0f7ff2] hover:bg-white/90"
+              >
+                <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
+                  Send email
+                </a>
+              </Button>
             </div>
           </div>
 
