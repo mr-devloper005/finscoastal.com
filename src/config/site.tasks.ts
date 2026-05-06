@@ -74,10 +74,10 @@ export const siteTaskDefinitions = [
 ] as const
 
 export const siteTaskViews = {
-  listing: '/listings',
-  classified: '/classifieds',
-  article: '/articles',
-  image: '/image-sharing',
+  listing: '/listing',
+  classified: '/classified',
+  article: '/article',
+  image: '/image',
   profile: '/profile',
   social: '/community',
   sbm: '/sbm',
