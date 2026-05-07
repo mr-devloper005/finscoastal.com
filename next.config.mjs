@@ -36,6 +36,16 @@ const nextConfig = {
         destination: '/classified/:slug*',
         permanent: true,
       },
+      {
+        source: '/users',
+        destination: '/user',
+        permanent: true,
+      },
+      {
+        source: '/users/:slug*',
+        destination: '/user/:slug*',
+        permanent: true,
+      },
     ];
   },
 
@@ -48,6 +58,14 @@ const nextConfig = {
       {
         source: '/classified/:slug*',
         destination: '/classifieds/:slug*',
+      },
+      {
+        source: '/user',
+        destination: '/profile',
+      },
+      {
+        source: '/user/:slug*',
+        destination: '/profile/:slug*',
       },
     ];
   },
