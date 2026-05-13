@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, BriefcaseBusiness, CarFront, Home, MapPin, PawPrint, Search, ShieldCheck, Shirt, Smartphone, Sofa, Sparkles, Wrench } from 'lucide-react'
+import { ArrowRight, BriefcaseBusiness, CarFront, Home, MapPin, PawPrint, Search, ShieldCheck, Shirt, Smartphone, Sofa, Wrench } from 'lucide-react'
 import { Footer } from '@/components/shared/footer'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { SchemaJsonLd } from '@/components/seo/schema-jsonld'
@@ -68,10 +68,6 @@ export async function HomePageOverride() {
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
             <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
               <div>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/12 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/90">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  Classified marketplace
-                </span>
                 <h1 className="mt-6 max-w-4xl text-5xl font-extrabold tracking-[-0.06em] sm:text-6xl">
                   Easy to sell, quick to discover, built for local action.
                 </h1>

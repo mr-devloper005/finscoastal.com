@@ -18,6 +18,8 @@ import {
 } from 'lucide-react'
 import type { SitePost } from '@/lib/site-connector'
 
+const TRANSPARENT_PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA='
+
 export type MarketplaceContent = {
   address?: string
   author?: string
@@ -76,7 +78,7 @@ export function getMarketplaceImage(post: SitePost, content = extractMarketplace
   const mediaUrl = media.find((item) => typeof item?.url === 'string' && item.url)?.url
   const contentImages = Array.isArray(content.images) ? content.images : []
   const contentImage = contentImages.find((item) => typeof item === 'string' && item)
-  return mediaUrl || contentImage || content.logo || '/placeholder.svg?height=900&width=1400'
+  return mediaUrl || contentImage || content.logo || TRANSPARENT_PLACEHOLDER
 }
 
 export function getMarketplaceExcerpt(post: SitePost, content = extractMarketplaceContent(post), maxLength = 140) {
@@ -111,7 +113,7 @@ export function getMarketplaceCurrency(post: SitePost, content = extractMarketpl
 export function formatMarketplacePrice(post: SitePost, content = extractMarketplaceContent(post)) {
   if (content.priceRange) return content.priceRange
   const price = getMarketplacePrice(post, content)
-  if (price === null) return 'See details'
+  if (price === null || price <= 0) return 'See details'
 
   const currency = getMarketplaceCurrency(post, content)
   try {

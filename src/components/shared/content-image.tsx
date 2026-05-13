@@ -2,7 +2,7 @@
 
 import { useMemo, useState, type CSSProperties, type ImgHTMLAttributes } from "react";
 
-const PLACEHOLDER = "/placeholder.svg?height=900&width=1400";
+const PLACEHOLDER = "data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=";
 
 type ContentImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> & {
   src?: string;
