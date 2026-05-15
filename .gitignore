@@ -24,3 +24,4 @@ node_modules/
 .env.production
 .env.production.local
 .codex-output/
+.env.example

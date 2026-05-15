@@ -32,6 +32,7 @@ export function TaskPostCardOverride({
   const location = getMarketplaceLocation(post, content)
   const category = getMarketplaceCategory(post, content)
   const price = formatMarketplacePrice(post, content)
+  const hasPrice = price !== 'See details'
   const timeLabel = getMarketplaceTimeLabel(post)
   const condition = getConditionLabel(content)
   const isClassified = taskKey === 'classified'
@@ -68,9 +69,13 @@ export function TaskPostCardOverride({
           </span>
         </div>
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
-          <div className="rounded-full bg-[linear-gradient(135deg,#ff7a1a_0%,#ea6610_100%)] px-4 py-2 text-sm font-bold text-white shadow-[0_14px_26px_rgba(255,122,26,0.3)]">
-            {isListing ? 'View profile' : price}
-          </div>
+          {isListing || hasPrice ? (
+            <div className="rounded-full bg-[linear-gradient(135deg,#ff7a1a_0%,#ea6610_100%)] px-4 py-2 text-sm font-bold text-white shadow-[0_14px_26px_rgba(255,122,26,0.3)]">
+              {isListing ? 'View profile' : price}
+            </div>
+          ) : (
+            <span />
+          )}
           <div className="rounded-full bg-white/90 p-2 text-[#13213c] shadow-sm">
             <ArrowUpRight className="h-4 w-4" />
           </div>
