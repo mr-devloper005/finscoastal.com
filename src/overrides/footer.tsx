@@ -17,6 +17,7 @@ const footerGroups = [
   {
     title: 'Support',
     links: [
+      { label: 'About Us', href: '/about' },
       { label: 'How It Works', href: '/about' },
       { label: 'Safety Tips', href: '/help' },
       { label: 'Contact', href: '/contact' },
@@ -28,8 +29,6 @@ const footerGroups = [
     links: [
       { label: 'Privacy Policy', href: '/privacy' },
       { label: 'Terms of Use', href: '/terms' },
-      { label: 'Cookie Policy', href: '/cookies' },
-      { label: 'Licenses', href: '/licenses' },
     ],
   },
 ]
@@ -79,7 +78,7 @@ export function FooterOverride() {
               <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5f6d87]">{group.title}</h3>
               <ul className="mt-5 space-y-3 text-sm">
                 {group.links.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${link.href}-${link.label}`}>
                     <Link href={link.href} className="transition-colors hover:text-[#0f7ff2]">
                       {link.label}
                     </Link>

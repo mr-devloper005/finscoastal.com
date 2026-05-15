@@ -280,7 +280,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
               ) : null}
 
               {!isArticle ? (
-                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <div className="mt-5">
                   {content.website ? (
                     <Button asChild className="h-12 rounded-full bg-[#0f7ff2] text-white hover:bg-[#0760c3]">
                       <a href={content.website} target="_blank" rel="noreferrer">Visit website</a>
@@ -288,9 +288,6 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
                   ) : (
                     <Button className="h-12 rounded-full bg-[#0f7ff2] text-white hover:bg-[#0760c3]">Message seller</Button>
                   )}
-                  <Button variant="outline" className="h-12 rounded-full border-[rgba(15,48,107,0.12)] bg-white">
-                    Save listing
-                  </Button>
                 </div>
               ) : null}
             </div>
