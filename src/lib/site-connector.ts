@@ -84,6 +84,21 @@ export async function fetchSiteBootstrap(options?: { fresh?: boolean }): Promise
   return fetchPublicJson<SiteBootstrap>("/bootstrap", options);
 }
 
+export async function fetchSitePostBySlug<TPost = SitePost>(
+  slug: string,
+  options?: { fresh?: boolean; task?: string }
+): Promise<(SiteFeed<TPost> & { post?: TPost | null }) | null> {
+  const params = new URLSearchParams();
+  if (typeof options?.task === "string" && options.task.trim()) {
+    params.set("task", options.task.trim().toLowerCase());
+  }
+  const suffix = params.toString() ? `?${params.toString()}` : "";
+  return fetchPublicJson<SiteFeed<TPost> & { post?: TPost | null }>(
+    `/post/${encodeURIComponent(slug)}${suffix}`,
+    options
+  );
+}
+
 export async function fetchSiteFeed<TPost = SitePost>(
   limit = 50,
   options?: { fresh?: boolean; category?: string; task?: string }

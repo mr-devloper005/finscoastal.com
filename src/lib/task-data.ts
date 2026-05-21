@@ -1,5 +1,5 @@
 import { SITE_CONFIG, type TaskKey } from "./site-config";
-import { fetchSiteFeed, type SiteFeed, type SitePost } from "./site-connector";
+import { fetchSiteFeed, fetchSitePostBySlug, type SiteFeed, type SitePost } from "./site-connector";
 import { getMockPostsForTask } from "./mock-posts";
 import { isValidCategory } from "./categories";
 
@@ -67,15 +67,26 @@ export const fetchTaskPosts = async (
 export const fetchTaskPostBySlug = async (task: TaskKey, slug: string) => {
   const allowMockFallback = process.env.NEXT_PUBLIC_USE_MOCK_CONTENT === "true";
   const type = getTaskContentType(task);
+
+  try {
+    const directMatch = await fetchSitePostBySlug<SitePost>(slug, { task: type });
+    if (directMatch?.post) return directMatch.post;
+
+    const freshDirectMatch = await fetchSitePostBySlug<SitePost>(slug, { task: type, fresh: true });
+    if (freshDirectMatch?.post) return freshDirectMatch.post;
+  } catch {
+    // Fall back to feed lookup for older backend deployments.
+  }
+
   const resolveFromFeed = (feed: SiteFeed<SitePost> | null) =>
     feed?.posts.find((post) => post.slug === slug && getPostType(post) === type) || null;
 
   try {
-    const cachedFeed = await fetchSiteFeed(200);
+    const cachedFeed = await fetchSiteFeed(1000);
     const cachedMatch = resolveFromFeed(cachedFeed);
     if (cachedMatch) return cachedMatch;
 
-    const freshFeed = await fetchSiteFeed(200, { fresh: true });
+    const freshFeed = await fetchSiteFeed(1000, { fresh: true });
     const freshMatch = resolveFromFeed(freshFeed);
     if (freshMatch) return freshMatch;
   } catch {
