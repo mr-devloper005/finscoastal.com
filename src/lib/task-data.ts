@@ -75,22 +75,7 @@ export const fetchTaskPostBySlug = async (task: TaskKey, slug: string) => {
     const freshDirectMatch = await fetchSitePostBySlug<SitePost>(slug, { task: type, fresh: true });
     if (freshDirectMatch?.post) return freshDirectMatch.post;
   } catch {
-    // Fall back to feed lookup for older backend deployments.
-  }
-
-  const resolveFromFeed = (feed: SiteFeed<SitePost> | null) =>
-    feed?.posts.find((post) => post.slug === slug && getPostType(post) === type) || null;
-
-  try {
-    const cachedFeed = await fetchSiteFeed(1000);
-    const cachedMatch = resolveFromFeed(cachedFeed);
-    if (cachedMatch) return cachedMatch;
-
-    const freshFeed = await fetchSiteFeed(1000, { fresh: true });
-    const freshMatch = resolveFromFeed(freshFeed);
-    if (freshMatch) return freshMatch;
-  } catch {
-    // fall through to mock data
+    // If the public API is temporarily unavailable, do not scan large feeds.
   }
 
   return allowMockFallback
