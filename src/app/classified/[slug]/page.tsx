@@ -1,4 +1,5 @@
-import ClassifiedDetailPage, { generateMetadata, generateStaticParams, revalidate } from "../../classifieds/[slug]/page";
+import ClassifiedDetailPage, { generateMetadata, generateStaticParams } from "../../classifieds/[slug]/page";
 
-export { generateMetadata, generateStaticParams, revalidate };
+export const revalidate = 3;
+export { generateMetadata, generateStaticParams };
 export default ClassifiedDetailPage;
