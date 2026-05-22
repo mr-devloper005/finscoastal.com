@@ -2,11 +2,12 @@
 
 FROM node:20-alpine AS base
 WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
 
 FROM base AS deps
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+COPY package.json pnpm-lock.yaml* ./
+RUN if [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile; else pnpm install --no-frozen-lockfile; fi
 
 FROM base AS builder
 ARG NEXT_PUBLIC_MASTER_PANEL_URL
@@ -19,9 +20,6 @@ ARG NEXT_PUBLIC_SITE_DESCRIPTION
 ARG NEXT_PUBLIC_SITE_DOMAIN
 ARG NEXT_PUBLIC_SITE_URL
 ARG NEXT_PUBLIC_SITE_OG_IMAGE
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-ENV NEXT_TELEMETRY_DISABLED=1
 ENV NEXT_PUBLIC_MASTER_PANEL_URL=$NEXT_PUBLIC_MASTER_PANEL_URL
 ENV NEXT_PUBLIC_MASTER_API_URL=$NEXT_PUBLIC_MASTER_API_URL
 ENV NEXT_PUBLIC_SITE_CODE=$NEXT_PUBLIC_SITE_CODE
@@ -32,20 +30,20 @@ ENV NEXT_PUBLIC_SITE_DESCRIPTION=$NEXT_PUBLIC_SITE_DESCRIPTION
 ENV NEXT_PUBLIC_SITE_DOMAIN=$NEXT_PUBLIC_SITE_DOMAIN
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 ENV NEXT_PUBLIC_SITE_OG_IMAGE=$NEXT_PUBLIC_SITE_OG_IMAGE
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 RUN pnpm run build
 
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
 RUN addgroup -S nodejs && adduser -S nextjs -G nodejs
-
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
 EXPOSE 3000
-CMD ["npm", "run", "start", "--", "-H", "0.0.0.0", "-p", "3000"]
+CMD ["node", "server.js"]
